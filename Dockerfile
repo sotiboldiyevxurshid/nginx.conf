@@ -1,2 +1,11 @@
-FROM nginx:latest
-COPY . /usr/share/nginx/html
+FROM golang:1.21
+
+WORKDIR /app
+
+COPY . .
+
+RUN go build -o main .
+
+EXPOSE 8080
+
+CMD ["./main"]
